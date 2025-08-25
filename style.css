@@ -1,0 +1,35 @@
+:root {
+     /* Neutral layers */
+  --color-background: hsl(220, 15%, 10%);  /* base background */
+  --color-surface:    hsl(220, 15%, 14%);  /* elevated surfaces */
+  --color-card:       hsl(220, 15%, 18%);  /* card background */
+  --color-border:     hsl(220, 15%, 22%);  /* subtle dividers */
+
+  /* Text */
+  --color-text-primary:   hsl(0, 0%, 96%);
+  --color-text-secondary: hsl(0, 0%, 70%);
+  --color-text-muted:     hsl(0, 0%, 50%);
+
+  /* Accents */
+  --color-accent-indigo:  hsl(260, 70%, 60%);
+  --color-accent-cyan:    hsl(190, 70%, 55%);
+  --color-accent-emerald: hsl(160, 60%, 50%);
+  --color-accent-amber:   hsl(40, 80%, 55%);
+}
+
+
+
+.app {
+    background-color: var(--color-background);
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto 1fr auto;
+    min-height: 100dvh;        
+}
+
+.header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  grid-column: 1 / -1;
+  height: 100px;              
+}
