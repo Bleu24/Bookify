@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "ArchivoBlack";
+    src: url(fonts/ArchivoBlack-Regular.woff2) format("woff2");
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "ArchivoBlack";
+    src: url(fonts/ArchivoBlack-Regular.woff) format("woff");
+    font-style: normal;
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Kanit";
+    src: url(fonts/Kanit-Regular.woff2) format("woff2");
+    font-style: normal;
+    font-weight: 600; 
+}
+
+@font-face {
+    font-family: "Kanit";
+    src: url(fonts/Kanit-Regular.woff) format("woff");
+    font-style: normal;
+    font-weight: 200;
+}
