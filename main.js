@@ -130,8 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // body listener
     bookContainer.addEventListener('click', (e) => {
-
-        const status = e.target.closest('.card__status');
         
         if (e.target.closest('.card__delete')) {
             const bookId = e.target.closest('.card').id;
