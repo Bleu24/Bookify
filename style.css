@@ -53,23 +53,6 @@ li {
   color: var(--color-text-primary);     
 }
 
-.body {
-  grid-column: 1 / -1;
-}
-
-.footer {
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: var(--body-font);
-  grid-column: 1 / -1;
-  color: var(--color-text-primary);
-  height: 3rem;
-  background-color: var(--color-surface);
-  gap: 1rem;
-}
-
 .logo {
   font-size: 2.5rem;
   font-family: var(--hero-font);
@@ -99,6 +82,38 @@ li {
 
 
 
+/* Body */
+
+.body {
+  padding: 5rem;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+}
+
+/* end */
+
+
+
+/* footer */
+
+.footer {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--body-font);
+  grid-column: 1 / -1;
+  color: var(--color-text-primary);
+  height: 3rem;
+  background-color: var(--color-surface);
+  gap: 1rem;
+}
+
+/* end */
+
+
 
 
 /* modal */
@@ -126,8 +141,8 @@ li {
   border-bottom: 1px solid var(--color-border);
 }
 
-.modal__close:hover {
-  stroke: var(--color-accent-red);
+.modal__close {
+  stroke: var(--color-text-muted);
 }
 
 .modal__form {
@@ -143,6 +158,9 @@ li {
 
 .modal__close:hover {
   cursor: pointer;
+  animation-name: trash-hover;
+  animation-duration: 200ms;
+  animation-fill-mode: forwards;
 }
 
 .modal__footer {
@@ -209,7 +227,7 @@ input:not(:placeholder-shown) {
 
 input#book_status:hover, .modal__submit:hover {
   cursor: pointer;
-  animation: hover-transition 500ms ease-in-out;
+  animation: hover-transition 200ms ease-in-out;
   animation-fill-mode: forwards;
 }
 
@@ -226,4 +244,123 @@ input#book_status:hover, .modal__submit:hover {
 
 .github:hover {
   cursor: pointer;
+}
+
+.card {
+  color:var(--color-text-primary);
+  padding: 2rem;
+  height: 200px;
+  width: 500px;
+  background-color: var(--color-card);
+  border-radius: 1rem;
+  border: 2px solid var(--color-border);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+}
+
+.card__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr;
+}
+
+.card__info {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__info--left {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 3px;
+  font-family: var(--body-font);
+  color: var(--color-text-secondary);
+}
+
+.card__title {
+  margin-bottom: 5px;
+  color: var(--color-text-primary);
+  font-family: var(--hero-font);
+}
+
+.card__bookCover {
+  align-self: center;
+  justify-self: center;
+  background-color: transparent;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: auto;
+ }
+
+.card__status {
+  font-family: var(--body-font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: var(--body-font);
+  font-size: 1.175rem;
+  border-style: none;
+  border-radius: 1rem;
+  background: linear-gradient(to right, var(--color-background), var(--color-accent-amber));
+}
+
+.card__status:hover {
+  cursor: pointer;
+  position: relative;
+  animation-name: hovering;
+  animation-duration: 200ms;
+  animation-fill-mode: forwards;
+}
+
+.card__status:hover > svg {
+  animation-name: rotate-svg;
+  animation-duration: 200ms;
+  animation-fill-mode: forwards;
+} 
+
+.card__delete > svg {
+  stroke: var(--color-text-muted);
+}
+
+.card__delete > svg:hover {
+  cursor: pointer;
+  animation-name: trash-hover;
+  animation-duration: 200ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hovering {
+  from {
+    bottom: 0px; 
+    background: linear-gradient(to right, var(--color-background), var(--color-accent-amber));
+  }
+  to {
+    bottom: 5px; 
+    background: var(--color-accent-amber);
+  }
+}
+
+@keyframes rotate-svg {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes trash-hover {
+  from {
+    stroke: var(--color-text-muted);
+  }
+  to {
+    stroke: var(--color-accent-red);
+  }
 }
