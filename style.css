@@ -126,6 +126,7 @@ li {
   width: 500px;
   height: 600px;
   background-color: var(--color-card);
+  border: 2px solid var(--color-border);
   position: absolute;
   border-radius: 5px;
   padding: 2rem;
