@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             myLibrary = myLibrary.filter(book => book.id !== bookId);
             localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 
-            display(myLibrary);
+            
         }
         
          if (e.target.closest('.card__status')) {
@@ -161,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('myLibrary', stringified);
         }
 
+        display(myLibrary);
     });
 
 
