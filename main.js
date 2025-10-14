@@ -14,13 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookStatus = document.querySelector('#book_status_hidden');
     const bookContainer = document.querySelector('.body');
 
-    // dummy cover
-    function Book(title, author, pages, isRead) {
-        this.id = crypto.randomUUID(); // stable identifier
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.isRead = isRead;
+    class Book {
+        id = crypto.randomUUID();
+        constructor(title, author, pages, isRead) {
+            this.title = title;
+            this.author = author;
+            this.pages = pages;
+            this.isRead = isRead;
+        }
     }
 
     function addBookToLibrary(title, author, pages, isRead) {
