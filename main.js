@@ -1,10 +1,10 @@
-import { refreshCardIDs } from './utils/refreshCardId.js' ; // use when forgot to add id on card
+import { refreshCardIDs } from './utils/refreshCardId.js'; // use when forgot to add id on card
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // assigning localStorage
     const savedBooks = localStorage.getItem('myLibrary');
-    
+
     // declaration of variables, functions and nodes
     let myLibrary = [];
     const modal = document.querySelector('.modal');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addBookToLibrary(title, author, pages, isRead) {
-        let newBook = new Book (title, author, pages, isRead);
+        let newBook = new Book(title, author, pages, isRead);
         myLibrary.push(newBook);
 
         //save book immediately to storage
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function display(library) {
         for (const book of library) {
-    
+
             if (document.getElementById(book.id) === null) {
                 const bookCard = document.createElement('div');
                 bookCard.id = book.id;
@@ -66,10 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 `
                 // NOTE: book.cover is not explicitly declared in the constructor, I leveraged the prototype chain to have a fallback book cover
                 bookContainer.appendChild(bookCard);
-            }      
+            }
         }
     }
-    
+
 
     if (savedBooks !== null) {
         myLibrary = JSON.parse(savedBooks);
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-   document.addEventListener('click', (e) => {
+    document.addEventListener('click', (e) => {
         const isModalOpen = getComputedStyle(modal).display === "grid";
         const clickedCloseBtn = e.target.closest('.modal__close');
         const clickedInsideModal = modal.contains(e.target);
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // form listeners
     bookForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const bookData = new FormData(bookForm);
         const bookArgs = [];
 
@@ -114,6 +114,32 @@ document.addEventListener('DOMContentLoaded', () => {
         display(myLibrary);
         bookForm.reset();
 
+    });
+
+    bookForm.addEventListener('input', (e) => {
+        const target = e.target;
+
+        target.setCustomValidity("");
+
+        switch (target.id) {
+            case "book_title":
+                if (target.value.length < 2) {
+                    target.setCustomValidity("I am expecting a book title!");
+                }
+                break;
+            case "book_author":
+                if (target.value.length < 2) {
+                    target.setCustomValidity("Author name's too short");
+                }
+                break;
+            case "book_pages":
+                if (target.validity.rangeUnderflow) {
+                    target.setCustomValidity("You can't have negative number of pages!");
+                }
+                break;
+            default:
+                break;
+        }
     });
 
     statusBtn.addEventListener('click', (e) => {
@@ -131,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // body listener
     bookContainer.addEventListener('click', (e) => {
-        
+
         if (e.target.closest('.card__delete')) {
             const bookId = e.target.closest('.card').id;
             e.target.closest('.card').remove();
@@ -140,9 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
             myLibrary = myLibrary.filter(book => book.id !== bookId);
             localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 
-            
+
         }
-        
+
         if (e.target.closest('.card__status')) {
 
             const statusButton = e.target.closest('.card__status');
